@@ -2,4 +2,4 @@
 
 demo截图如下：
 
-
+![截图](https://github.com/QuintGao/TagsDemo/blob/master/demo.png)
