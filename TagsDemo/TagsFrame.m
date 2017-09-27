@@ -10,8 +10,6 @@
 //  每行超过的宽度平均分配给每个标签
 //  每行标签左右对其
 
-
-
 #import "TagsFrame.h"
 
 @implementation TagsFrame
@@ -21,8 +19,8 @@
     self = [super init];
     if (self) {
         _tagsFrames = [NSMutableArray array];
-        _tagsMinPadding = 10;
-        _tagsMargin = 10;
+        _tagsMinPadding  = 10;
+        _tagsMargin      = 10;
         _tagsLineSpacing = 10;
     }
     return self;
@@ -52,6 +50,7 @@
             nextWidth = [self sizeWithText:tagsArray[i+1] font:TagsTitleFont].width + _tagsMinPadding * 2;
         }
         CGFloat nextBtnX = btnX + btnW + _tagsMargin;
+        NSLog(@"%f",WIDTH);
         // 如果下一个按钮，标签最右边则换行
         if ((nextBtnX + nextWidth) > (WIDTH - _tagsMargin)) {
             // 计算超过的宽度
@@ -74,19 +73,19 @@
     }
     
     NSInteger location = 0;  // 截取的位置
-    NSInteger length = 0;    // 截取的长度
-    CGFloat averageW = 0;    // 多出来的平均的宽度
+    NSInteger length   = 0;    // 截取的长度
+    CGFloat averageW   = 0;    // 多出来的平均的宽度
     
     CGFloat tagW = 0;
     CGFloat tagH = 30;
     
-    for (NSInteger i=0; i<lastIndexs.count; i++) {
+    for (NSInteger i = 0; i < lastIndexs.count; i++) {
         
         NSInteger lastIndex = [lastIndexs[i] integerValue];
         if (i == 0) {
             length = lastIndex + 1;
         }else{
-            length = [lastIndexs[i] integerValue]-[lastIndexs[i-1] integerValue];
+            length = [lastIndexs[i] integerValue] - [lastIndexs[i-1] integerValue];
         }
         
         // 从数组中截取每一行的数组
@@ -98,7 +97,7 @@
         CGFloat tagX = _tagsMargin;
         CGFloat tagY = _tagsLineSpacing + (_tagsLineSpacing + tagH) * i;
     
-        for (NSInteger j=0; j<newArr.count; j++) {
+        for (NSInteger j = 0; j < newArr.count; j++) {
             
             tagW = [self sizeWithText:newArr[j] font:TagsTitleFont].width + _tagsMinPadding * 2 + averageW;
             
